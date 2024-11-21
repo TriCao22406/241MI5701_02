@@ -1,0 +1,13 @@
+.table th, .table td {
+    vertical-align: middle;
+  }
+  
+.table th {
+    padding-bottom: 1rem;;
+  }
+
+.table td {
+    height: 4rem;
+    white-space: pre-line;
+
+}

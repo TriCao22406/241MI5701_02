@@ -1,0 +1,19 @@
+.footer {
+    background-color: #8CC2DCC4;
+}
+
+.customer-links-col-2 a {
+    text-decoration: none; /* Bỏ gạch dưới */
+  }
+  
+.customer-links-col-2 a:hover {
+    text-decoration: underline; /* Gạch dưới khi di chuột qua nếu muốn */
+  }
+
+.customer-links-col-3 a{
+    text-decoration: none; /* Bỏ gạch dưới */
+}
+
+.customer-links-col-3 a:hover{
+    text-decoration: underline; /* Gạch dưới khi di chuột qua nếu muốn */
+}

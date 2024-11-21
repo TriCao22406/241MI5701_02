@@ -1,0 +1,81 @@
+[
+    {
+      "customerInfo": 
+        {
+          "name":"",
+          "email": "",
+          "phone": "",
+          "address": ""
+        },
+      "userId": 1, //get from session
+      "orderDetail":
+      [
+        {
+        "productId": 1,
+        "size":
+        "quantity": 1
+        }
+      ],
+
+      "status": "Chờ xác nhận", //"Chờ xác nhận" if before timestamp1, "Đang chuẩn bị hàng" if between timestamp1 and timestamp2, "Đang giao hàng" if between timestamp2 and timestamp3, "Đã giao" if between timestamp3 and timestamp4, "Đã hoàn thành" if after timestamp4
+      "total": ,
+      "paymentMethod": "Thanh toán khi nhận hàng",
+      "notes": ,
+      //Chuyển khoản qua ngân hàng và Chuyển khoản qua ví điện tử
+      "timer": 
+      {
+        "orderTime": null,
+        "Timestamp1": null, //Đang chuẩn bị hàng (+30 phút vs ordertime)
+        "Timestamp2": null, //Đã giao cho ĐVVC (+4h vs ordertime)
+        "Timestamp3": null, //Đã nhận được hàng (+2 ngày vs timestamp2)
+        "Timestamp4": null, //Đơn hàng đã  hoàn thành (người dùng bấm xác nhận đã nhận hàng)
+        "expectedDate": null , //Ngày dự kiến giao hàng (+2.5 ngày vs ordertime)
+      }
+      
+    },
+    {
+      "orderId": "327424390",
+      "status": "Đã hoàn thành",
+      "details": "Vòng tay Pacifist Knot x1",
+      "total": "138,000,000 VND"
+    },
+    {
+      "orderId": "327424391",
+      "status": "Đã hoàn thành",
+      "details": "Vòng tay Pacifist T Smile x1",
+      "total": "45,000,000 VND"
+    }
+  ]
+
+  {
+    "_id": {
+      "$oid": "6737254d72c369a5826508dd"
+    },
+    "orderId": 327424389,
+    "customerInfo": {
+      "customerId": 123456789,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "phone": "1234567890",
+      "address": "123 Main St, Hometown, Country"
+    },
+    "accountID": 1,
+    "orderDetail": [
+      {
+        "productId": , 
+        "size":,
+        "productQuantity": 1
+      }
+    ],
+    "status": "Đã giao",
+    "total": 208000000,
+    "paymentMethod": "Thanh toán khi nhận hàng",
+    "timer": {
+      "orderTime": "2024-11-15T09:00:00Z",
+      "Timestamp1": "2024-11-15T09:30:00Z",
+      "Timestamp2": "2024-11-15T12:30:00Z",
+      "Timestamp3": "2024-11-17T13:00:00Z",
+      "Timestamp4": null,
+      "expectedDate": "2024-11-17T09:00:00Z"
+    }
+  }

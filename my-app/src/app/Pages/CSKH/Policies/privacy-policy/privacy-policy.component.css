@@ -1,0 +1,31 @@
+div {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2.2rem; /* Tương đương với 24px */
+}
+
+.sub_title {
+    font-weight: bold;
+    font-size: 1.6rem; /* 18px tương đương với 1.125rem */
+}
+
+.content_text, ul {
+    font-size: 1.15rem; /* 16px tương đương với 1rem */
+    line-height: 1.5em;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background-image: repeating-linear-gradient(
+        to right, 
+        #8CC2DC, 
+        #8CC2DC 1.25rem, /* 20px tương đương với 1.25rem */
+        transparent 0.625rem, /* 10px tương đương với 0.625rem */
+        transparent 1.875rem /* 30px tương đương với 1.875rem */
+    );
+}

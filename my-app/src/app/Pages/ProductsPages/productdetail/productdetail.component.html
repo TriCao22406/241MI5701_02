@@ -1,0 +1,322 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+  />
+</head>
+
+<div class="container" *ngIf="product">
+  <!-- Navbar -->
+  <nav class="breadcrumbs mb-4" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/Products" class="breadcrumb-link">Trang chủ</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a
+          [routerLink]="['/Products']"
+          [queryParams]="{ categories: product.productType }"
+          class="breadcrumb-link"
+        >
+          {{ product.productType }}
+        </a>
+      </li>
+      <li class="breadcrumb-item">
+        <a
+          (click)="
+            goToCollection(replaceSpacesWithHyphen(product.productCollection))
+          "
+          class="breadcrumb-link"
+        >
+          {{ product.productCollection }}
+        </a>
+      </li>
+      <li
+        class="breadcrumb-item active fw-bold font-family-Noto Serif"
+        aria-current="page"
+      >
+        {{ product.productName }}
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Thông tin sản phẩm -->
+  <article class="container mt-4">
+    <section class="row mt-4">
+      <!-- Hình ảnh sản phẩm -->
+      <div class="col-md-6">
+        <!-- Hình ảnh chính của sản phẩm với kích thước chuẩn -->
+        <div
+          class="p-3 bg-white border border-2 border-black mx-auto text-center"
+          style="max-width: 450px"
+        >
+          <img
+            [src]="product.images[selectedImageIndex]"
+            [alt]="product.productName"
+            class="img-fluid"
+            style="max-width: 100%; max-height: 450px"
+            loading="lazy"
+          />
+        </div>
+        <!-- Frame ảnh bên dưới -->
+        <div
+          class="d-flex justify-content-center align-items-center mt-3"
+          style="gap: 10px"
+        >
+          <button
+            class="btn btn-link p-0 me-1"
+            (click)="previousImage()"
+            [disabled]="selectedImageIndex === 0"
+          >
+            <i class="bi bi-chevron-left" style="font-size: 2rem"></i>
+          </button>
+          <div
+            class="d-flex justify-content-center"
+            style="gap: 10px; overflow: hidden; width: 350px"
+          >
+            <img
+              *ngFor="
+                let img of product.images.slice(
+                  selectedImageIndex,
+                  selectedImageIndex + 3
+                );
+                let i = index
+              "
+              [src]="img"
+              [alt]="'Image ' + (selectedImageIndex + i)"
+              class="img-thumbnail"
+              [class.selected]="selectedImageIndex + i === selectedImageIndex"
+              (click)="selectImage(selectedImageIndex + i)"
+              style="
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                border: 2px solid transparent;
+              "
+              [style.border-color]="
+                selectedImageIndex + i === selectedImageIndex
+                  ? 'black'
+                  : 'transparent'
+              "
+            />
+          </div>
+          <button
+            class="btn btn-link p-0 ms-1"
+            (click)="nextImage()"
+            [disabled]="selectedImageIndex + 3 >= product.images.length"
+          >
+            <i class="bi bi-chevron-right" style="font-size: 2rem"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Thông tin sản phẩm -->
+      <div class="col-md-6">
+        <h1 class="h3 mb-1 fw-bold">{{ product.productName }}</h1>
+        <p class="text-muted mt-3">Được làm từ {{ product.material }}</p>
+
+        <!-- Giá sản phẩm -->
+        <div class="row justify-content-between align-items-center">
+          <p class="text-black fs-4 fw-bold col-4">
+            {{ product.price | number: '1.0-0' }} VNĐ
+          </p>
+          <p
+            class="text-black text-opacity-25 fs-4 fw-bold text-decoration-line-through col-4"
+          >
+          {{ (getDiscountedPrice(product)| ceil:10000) | number: '1.0-0' }} VNĐ
+        </p>
+        </div>
+        <hr class="text-primary" />
+
+        <!-- Số lượng sản phẩm -->
+        <div class="my-4 row align-items-center">
+          <div class="col-md-9">
+            <label for="quantity" class="form-label fw-bold mb-0"
+              >Số lượng:</label
+            >
+          </div>
+          <div class="col-md-3">
+            <div class="input-group">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="decreaseQuantity()"
+                [disabled]="quantity <= 1"
+              >
+                -
+              </button>
+              <input
+                type="number"
+                class="form-control text-center no-spinner"
+                id="quantity"
+                [(ngModel)]="quantity"
+                min="1"
+                max="99"
+                style="width: 60px"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="increaseQuantity()"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lựa chọn kích cỡ sản phẩm -->
+        <div class="mb-3 row">
+          <label for="size" class="form-label fw-bold"
+            >Vui lòng chọn size:</label
+          >
+          <div class="d-flex justify-content-between align-items-center">
+            <select
+              id="size"
+              class="form-select w-25 me-3"
+              [(ngModel)]="selectedSize"
+            >
+              <option value="" disabled selected>Chọn kích cỡ</option>
+              <option
+                *ngFor="let size of product?.sizes"
+                [value]="size.size"
+                [disabled]="size.quantity <= 0"
+              >
+                {{ size.size }}
+              </option>
+            </select>
+            <!--Cách đo size-->
+            <button
+              class="btn text-secondary p-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sizeGuideOffcanvas"
+              (click)="showGuideSize(product.productType)"
+            >
+              Cách đo size
+            </button>
+          </div>
+          <!-- Thông báo lỗi nếu chưa chọn kích cỡ -->
+          <div *ngIf="sizeError" class="text-danger mt-2">{{ sizeError }}</div>
+        </div>
+
+        <!-- Các nút thao tác -->
+        <div class="d-flex flex-wrap gap-2">
+          <button
+            class="btn btn-outline-dark fw-bold flex-fill py-2 btn-add"
+            (click)="addToCart()"
+          >
+            Thêm vào giỏ hàng
+          </button>
+          <button
+            class="btn btn-teal btn-info flex-fill py-2 fw-bold"
+            (click)="addToFavorites()"
+          >
+            Thêm vào yêu thích
+            <i class="bi bi-heart-fill ms-2"></i>
+          </button>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+          <button
+            class="btn btn-teal btn-info py-3 fw-bold"
+            (click)="buyNow()"
+            style="width: 100%"
+          >
+            MUA HÀNG NGAY
+          </button>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <section class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article>
+          <h3 class="text-center">Thông tin sản phẩm</h3>
+          <hr class="my-3" />
+          <p>{{ product.description }}</p>
+          <ul>
+            <li *ngFor="let detail of productDetailsList">{{ detail }}</li>
+          </ul>
+        </article>
+      </div>
+      <div class="col-lg-4">
+        <aside class="promotions p-3" style="background-color: #d9d9d9">
+          <h3 class="text-center">Ưu đãi</h3>
+          <ul class="promotion-list mt-3">
+            <li>Freeship với đơn từ 500k</li>
+            <li>Ship hỏa tốc toàn quốc</li>
+            <li>
+              Ưu đãi giảm đến 200k khi thanh toán điện tử qua ngân hàng, ví điện
+              tử
+            </li>
+            <li>Tặng voucher 300K khi mua hàng lần đầu tiên</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Thông báo nếu sản phẩm không tồn tại -->
+<div *ngIf="!product" class="alert alert-danger mt-4">
+  Sản phẩm không tồn tại!
+</div>
+
+<!-- Mở hướng dẫn cách đo size -->
+<div
+  class="offcanvas offcanvas-end"
+  tabindex=""
+  id="sizeGuideOffcanvas"
+  style="width: 600px; min-width: 200px"
+>
+  <ng-container *ngIf="currentGuide">
+    <div class="offcanvas-header">
+      <h5 class="fw-bold">{{ currentGuide.title }}</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body px-5">
+      <div class="p-2 mb-2 rounded bg-teal">
+        <strong>Đo bằng chỉ/giấy bản nhỏ và thước</strong><br />
+        Bạn hãy chuẩn bị một cây thước, 1 cây kéo, 1 cây bút & một tờ giấy và
+        làm theo các bước sau nhé:
+      </div>
+      <div *ngFor="let step of currentGuide.steps">
+        <p>
+          <strong>{{ step.step }}</strong>
+        </p>
+        <div class="text-center">
+          <img
+            *ngIf="step.imageUrl"
+            [src]="step.imageUrl"
+            class="img-fluid mb-2"
+          />
+        </div>
+      </div>
+      <div>
+        <p>
+          <strong>{{ currentGuide.result }}</strong>
+        </p>
+      </div>
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Đường kính</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of currentGuide.sizeTable">
+            <td>{{ row.size }}</td>
+            <td>{{ row.measurement }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>

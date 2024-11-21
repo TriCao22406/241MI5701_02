@@ -1,0 +1,116 @@
+<div>
+    <!--Header 1  -->
+    <nav class="navbar navbar-expand-lg navbar-light text-white header-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Nut ba gach khi thu man hinh lai -->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Content -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav header-top">
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-7 fw-bold py-0" href="/Search-Order">
+                            <img src="assets/images/header/tra_cuu.png" alt="No" class="me-1 align-text-bottom" style="height: 1em;">
+                            Tra cứu đơn hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-7 fw-bold py-0" href="/Favorite">
+                            <img src="assets/images/header/yeu_thich.png" alt="No" class="me-1 align-text-bottom" style="height: 1em;">
+                        Yêu thích</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-7 fw-bold py-0" href="/Cart" (click)="goToCart()">
+                            <img src="assets/images/header/gio_hang.png" alt="No" class="me-1 align-text-bottom" style="height: 1em;">
+                            Giỏ hàng</a>
+                    </li>
+                    <!-- Hiển thị "Đăng nhập" nếu chưa đăng nhập -->
+                    <li class="nav-item" *ngIf="!isLoggedIn">
+                        <a class="nav-link text-white fs-7 fw-bold py-0" href="/Login">
+                            <img src="assets/images/header/dang_nhap.png" alt="No" class="me-1 align-text-bottom" style="height: 1em;">
+                            Đăng nhập
+                        </a>
+                    </li>
+                    <!-- Hiển thị "Tài khoản của tôi" nếu đã đăng nhập -->
+                    <li class="nav-item" *ngIf="isLoggedIn">
+                        <a class="nav-link text-white fs-7 fw-bold py-0" href="/My-Account">
+                            <img src="assets/images/header/tai_khoan_toi.png" alt="No" class="me-1 align-text-bottom" style="height: 1em;">
+                            Tài khoản của tôi
+                        </a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn">
+                        <a class="nav-link text-white fs-7 fw-bold py-0" (click)="onLogout()" href="/Home">
+                            <img src="assets/images/header/tai_khoan_toi.png" alt="No" class="me-1 align-text-bottom" style="height: 1em;">
+                            Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>     
+  <!-- Header 2  -->
+  <nav class="navbar navbar-expand-lg navbar-light header-2 bg-white py-0">
+    <div class="container-fluid align-items-center">
+      <a class="navbar-brand" href="#">
+        <img
+          src="assets/images/header/Logo.png"
+          alt="No"
+          class="me-1 align-text-bottom px-4"
+          style="height: 3.5em"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#headerNav2"
+        aria-controls="headerNav2"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="headerNav2">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item mx-3 dropdown">
+                        <a class="nav-link fs-5 fw-bold" href="/Products">Sản phẩm
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Products?categories=Nhẫn&sort=">Nhẫn</a></li>
+                            <li><a class="dropdown-item" href="/Products?categories=Vòng%20tay&sort=">Vòng tay</a></li>
+                            <li><a class="dropdown-item" href="/Products?categories=Vòng%20cổ&sort=">Vòng cổ</a></li>
+                        </ul>
+
+                    </li>
+                    
+                    <!-- Dropdown for Bộ sưu tập -->
+                    <li class="nav-item mx-3 dropdown">
+                        <a class="nav-link fs-5 fw-bold" href="/Collections">Bộ sưu tập </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Collections/Pacifist-HardWear?collections=Pacifist-HardWear">Pacifist Hardwear</a></li>
+                            <li><a class="dropdown-item" href="Collections/Pacifist-Lock?collections=Pacifist-Lock">Pacifist Lock</a></li>
+                            <li><a class="dropdown-item" href="/Collections/Jean-Schlumberger-by-Pacifist?collections=Jean-Schlumberger-by-Pacifist">Jean Schlumberger</a></li>
+                            <li><a class="dropdown-item" href="/Collections/Pacifist-T?collections=Pacifist-T">Pacifist T</a></li>
+                            <li><a class="dropdown-item" href="/Collections/Pacifist-Knot?collections=Pacifist-Knot">Pacifist Knot</a></li>
+                            <li><a class="dropdown-item" href="/Collections/Return-to-Pacifist?collections=Return-to-Pacifist">Return to Pacifist</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5 fw-bold" href="/Sales-Off?discount=true">Sale off</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5 fw-bold" href="/Blog">Blog</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5 fw-bold" href="/About-Us">Về chúng tôi</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3 search-container">
+                    <input class="form-control search-box" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,85 @@
+<main class="container">
+  <div class="row">
+    <!-- Người dùng chưa đăng nhập thì giao diện sẽ là 8:4, nếu người dùng đăng nhập thì là 12 -->
+    <div class="h-100" [ngClass]="[userId ? 'col-md-12' : 'col-md-8']">
+      <h3 class="text-center">Sản phẩm yêu thích</h3>
+
+      <p class="mt-2" *ngIf="!userId">
+        Nếu bạn chưa đăng nhập, mục sản phẩm yêu thích của bạn chỉ có trên trình
+        duyệt của thiết bị này. Bạn hãy đăng nhập để sản phẩm luôn sẵn có trong
+        danh sách nhé!
+      </p>
+      <h5>
+        Hiện bạn đang có {{ favoriteProducts.length }} sản phẩm yêu thích!
+      </h5>
+      <div class="row">
+        <div
+          *ngFor="let product of favoriteProducts"
+          class="col-sm-6"
+          [ngClass]="[userId ? 'col-md-4 col-lg-3' : 'col-md-4']"
+        >
+          <div class="product-card-favorite my-3 p-2">
+            <div>
+              <img
+                [alt]="product.productName"
+                [src]="product.images[0]"
+                class="img-fluid mb-2 product-favorite-image"
+              />
+              <div class="product-favorite-details">
+                <h6 class="fw-bold product-favorite-details--name">
+                  {{ product.productName }}
+                </h6>
+                <p class="small-text mb-1 material">{{ product.material }}</p>
+                <div class="product-info">
+                  <p class="fw-bold price fs-6">
+                    {{
+                      product.price * (1 - product.discount / 100)
+                        | number : "1.0-0"
+                    }}
+                    VNĐ
+                    <br />
+                    <span class="fw-semibold" style="font-size: 0.83rem">
+                      <span class="text-decoration-line-through text-muted">
+                        {{ product.price | number : "1.0-0" }}
+                        VNĐ
+                      </span>
+                      <span
+                        class="badge text-bg-danger mb-1 ms-2"
+                        style="font-size: 0.8rem"
+                      >
+                        Giảm {{ product.discount }}%
+                      </span>
+                    </span>
+                  </p>
+                </div>
+                <!--Nhấn vào Mua ngay để đến Chi tiết sản phẩm -->
+                <button
+                  class="btn btn-info btn-teal btn-buy w-100"
+                  (click)="goToProductDetail(product.productCode)"
+                >
+                  Mua ngay
+                </button>
+              </div>
+            </div>
+            <div class="product-favorite-delete">
+              <button
+                type="button"
+                class="btn-close btn btn-info"
+                aria-label="Close"
+                (click)="handleDeleteFavorite(product)"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!userId" class="col-md-4">
+      <div
+        class="h-100 py-4"
+        style="background-color: var(--pcf-neutral) !important"
+      >
+        <app-login-page [isPage]="false"></app-login-page>
+      </div>
+    </div>
+  </div>
+</main>

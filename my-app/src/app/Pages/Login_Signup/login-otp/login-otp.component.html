@@ -1,0 +1,24 @@
+<div class="auth-container">
+    <h2>XÁC THỰC ĐĂNG KÝ</h2>
+    <div class="lock-icon">
+        <!-- Biểu tượng khóa để tạo cảm giác bảo mật cho người dùng -->
+        <i class="material-icons md-48">lock</i>
+    </div>
+    <p>Quý khách vui lòng nhập mã OTP vừa được gửi qua email. Mã xác thực chỉ có hiệu lực trong 3 phút.</p>
+    <div class="otp-input-container">
+        <!-- Các ô nhập OTP. Mỗi ô chỉ cho phép nhập một ký tự số -->
+        <input type="text" maxlength="1" [(ngModel)]="otpCode[0]" (input)="moveToNext($event, 0)" [disabled]="false">
+        <input type="text" maxlength="1" [(ngModel)]="otpCode[1]" (input)="moveToNext($event, 1)" [disabled]="otpCode[0] === ''">
+        <input type="text" maxlength="1" [(ngModel)]="otpCode[2]" (input)="moveToNext($event, 2)" [disabled]="otpCode[1] === ''">
+        <input type="text" maxlength="1" [(ngModel)]="otpCode[3]" (input)="moveToNext($event, 3)" [disabled]="otpCode[2] === ''">
+        <input type="text" maxlength="1" [(ngModel)]="otpCode[4]" (input)="moveToNext($event, 4)" [disabled]="otpCode[3] === ''">
+        <input type="text" maxlength="1" [(ngModel)]="otpCode[5]" (input)="moveToNext($event, 5)" [disabled]="otpCode[4] === ''">
+    </div>
+    <!-- Nút xác thực chỉ hoạt động khi người dùng đã điền đủ mã OTP -->
+    <button class="verify-button" [disabled]="!isOtpFilled()" (click)="verifyOtp()">Xác thực</button>
+    <div class="resend-link">
+        <!-- Liên kết để gửi lại mã OTP và nhận mã OTP qua điện thoại -->
+        <p>Chưa nhận được mã? <a href="#" (click)="resendOtp()">Gửi lại</a></p>
+        <p>Bạn muốn nhận mã OTP qua điện thoại. Nhấn <a href="#" (click)="getOtpViaPhone()">vào đây</a> để nhận</p>
+    </div>
+</div>

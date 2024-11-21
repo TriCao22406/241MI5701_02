@@ -1,0 +1,62 @@
+
+<!-- Purchase History Table -->
+<div class="d-flex justify-content-between mb-5 " *ngIf="!selectedOrder && !selectedOrderDetail" @buyHistoryTransition>
+  <h4 class="fw-bold">LỊCH SỬ MUA HÀNG</h4>
+  <div class="input-group w-25">
+    <span class="input-group-text fs-4 rounded-start-3 py-0 pe-0 pb-1" style="background-color: white; border-right: none;">˖⌕ ۫ </span>
+    <input type="text" class="form-control fs-6 rounded-end-3 py-0 border-start-0" placeholder="Tìm kiếm đơn hàng">
+  </div>
+</div>
+
+<table class="table text-center pl-5" *ngIf="!selectedOrder && !selectedOrderDetail" @buyHistoryTransition>
+  <thead style="border-bottom: 4px solid black;">
+    <tr class="fs-6">
+      <th scope="col" style="width: 20%;">Mã đơn hàng</th>
+      <th scope="col" style="width: 15%;">Trạng thái</th>
+      <th scope="col" style="width: 30%;">Chi tiết</th>
+      <th scope="col" style="width: 15%;">Tổng tiền</th>
+      <th scope="col" style="width: 10%;">Đánh giá</th>
+      <th scope="col" style="width: 10%;">Mua lại</th>
+    </tr>
+  </thead>
+  <tbody class="border-top">
+    <tr *ngFor="let order of orders" style="height: 7rem;" class="order-row">
+      <td  (click)="openDetail(order)">{{ order._id }}</td>
+      <td (click)="openDetail(order)">{{ order.status }}</td>
+      <td (click)="openDetail(order)" class="py-3">
+          <div *ngFor="let detail of getCombinedOrderDetails(order.orderDetail)">
+            {{ detail.productId.productName }} x{{ detail.quantity }}
+          </div>
+      </td>
+      <td (click)="openDetail(order)">{{ order.total | number:'1.0-0'}} VNĐ</td>
+        <td>
+          <button 
+            class="btn btn-outline-teal btn-sm py-2 w-100" 
+            [disabled]="order.status !== 'Đã hoàn thành'" 
+            (click)="openRating(order)">
+            Đánh giá
+          </button>
+        </td>
+      <td>
+        <button class="btn btn-outline-teal btn-sm py-2 w-100">Mua lại</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="selectedOrder" @slideTransition>
+  <a class="go-back btn btn-teal rounded-pill ms-4 mb-3 px-3" (click)="closeRating()">く TRỞ LẠI</a>
+
+  <div class="mb-5"  *ngFor="let product of uniqueProducts">
+    <app-rating [productCode]="product.productId.productCode" (backToBuyHistory)="onBackToBuyHistory()"></app-rating>
+  </div>
+</div>
+
+<div *ngIf="selectedOrderDetail" @slideTransition>
+  <a class="go-back btn btn-teal rounded-pill ms-4 px-3" (click)="closeDetail()">く TRỞ LẠI</a>
+
+  <div class="mb-5">
+    <app-order-detail [selectedOrder]="selectedOrderDetail" (openRating)="openRating(selectedOrderDetail)"></app-order-detail>
+  </div>
+</div>
+

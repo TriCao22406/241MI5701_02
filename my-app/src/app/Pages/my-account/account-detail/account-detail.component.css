@@ -1,0 +1,51 @@
+.form-group {
+    justify-content: end;
+}
+
+.form-group label{
+    font-weight: bold;
+}
+
+.profile-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    position: relative;  /* This allows the SVG to be positioned relative to this container */
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+  
+  .profile-picture img {
+    width: 100%;   /* Make the image fill the container */
+    height: 100%;  /* Make the image fill the container */
+    object-fit: cover; /* Ensures the image maintains aspect ratio while covering the container */
+  }
+  
+  .profile-svg {
+    position: absolute; /* Positions the SVG on top of the image */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Adjust width to match the container */
+    height: 100%; /* Adjust height to match the container */
+    z-index: 1;   /* Ensures SVG is on top of the image */
+  }
+  
+  .upload-button {
+    padding: 0.5rem;
+    background-color: var(--pcf-light-gray);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .upload-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+

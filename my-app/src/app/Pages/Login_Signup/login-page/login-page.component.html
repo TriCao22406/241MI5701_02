@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập</title>
+  </head>
+
+  <body
+    class="d-flex justify-content-center align-items-center"
+    [ngClass]="isPage ? 'bg-white' : 'bg-transparent'"
+  >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div
+          class="col-md-5 col-lg-5 text-md-end text-sm-center text-center"
+          style="height: 600px"
+          *ngIf="isPage"
+        >
+          <img
+            src="assets/images/login/165356-1.png"
+            class="img-fluid"
+            alt="Fashion Image"
+          />
+        </div>
+        <div class="" [ngClass]="isPage ? 'col-md-5 col-lg-5' : 'col-12'">
+          <div class="card-body">
+            <h2
+              class="card-title text-center fw-bold"
+              style="font-weight: bold"
+            >
+              ĐĂNG NHẬP
+            </h2>
+
+            <!-- Hiển thị thông báo lỗi nếu có -->
+            <div *ngIf="errorMessage" class="text-danger text-center my-2">
+              {{ errorMessage }}
+            </div>
+
+            <!-- Form đăng nhập -->
+            <form class="pr-10" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+              <div class="form-group my-2">
+                <label for="email">Địa chỉ email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  required
+                  placeholder="example@gmail.com"
+                />
+                <div
+                  *ngIf="loginForm.submitted && !email"
+                  class="text-danger small"
+                >
+                  Vui lòng nhập địa chỉ email.
+                </div>
+              </div>
+              <div class="form-group my-2">
+                <label for="password">Mật khẩu</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  [(ngModel)]="password"
+                  required
+                  placeholder="₍ᐢ. .ᐢ₎ ₊˚⊹♡"
+                />
+                <div
+                  *ngIf="loginForm.submitted && !password"
+                  class="text-danger small"
+                >
+                  Vui lòng nhập mật khẩu.
+                </div>
+              </div>
+              <a href="/Forgot" class="d-block mb-3 text-muted small my-2"
+                >Quên mật khẩu?</a
+              >
+              <div class="text-center">
+                <button type="submit" class="btn btn-info btn-teal">
+                  Đăng nhập
+                </button>
+              </div>
+            </form>
+            <div class="text-center my-3">
+              <p class="mb-0" style="font-weight: bold">Hoặc</p>
+              <button class="btn btn-zalo mb-2">
+                Đăng nhập qua Zalo
+              </button>
+              <button class="btn btn-google">Đăng nhập qua Google</button>
+            </div>
+            <div class="text-center my-4">
+              <p class="fw-bold mb-1">Bạn chưa có tài khoản?</p>
+              <button
+                class="btn btn-info btn-block btn-teal"
+                onclick="location.href='/SignUp'"
+              >
+                Đăng ký ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

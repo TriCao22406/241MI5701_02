@@ -1,0 +1,167 @@
+<div class="container">
+  <h4 class="mb-4 fw-bold">THÔNG TIN TÀI KHOẢN</h4>
+  <form (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-8">
+
+        <div class="form-group row mb-3">
+          <label class="col-form-label col-auto" for="fullName">Họ và tên:</label>
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              [(ngModel)]="userInfo.name"
+              name="fullName"
+              placeholder="✧˖°. 사랑해❤️ 𝜗𝜚 ‧₊˚ ⊹"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group row mb-3">
+          <label class="col-form-label col-auto" for="phone">Số điện thoại:</label>
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              [(ngModel)]="userInfo.phone"
+              name="phone"
+              placeholder="౨⋆｡‧˚ʚ☎️ɞ˚‧｡⋆ৎ"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group row mb-3">
+          <label class="col-form-label col-auto" for="email">Email:</label>
+          <div class="col-md-7">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              [ngModel]="userInfo.email"
+              name="email"
+              disabled
+              placeholder="userInfo.email"
+            />
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group row mb-3">
+          <label class="col-form-label col-auto" for="address">Địa chỉ:</label>
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              [(ngModel)]="userInfo.address"
+              name="address"
+              placeholder=".⋆☾⋆⁺₊✧⊹⋆. ✈︎ *☁︎｡ ⋆｡ ﾟ☀︎｡ ⋆｡ ﾟ"
+            />
+          </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group row mb-3">
+          <label class="col-form-label col-auto" for="dob">Ngày sinh:</label>
+          <div class="col-md-7">
+            <input
+              type="date"
+              class="form-control"
+              id="dob"
+              [(ngModel)]="userInfo.dob"
+              name="dob"
+            />
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group row my-3 mt-2">
+          <label class="col-auto">Giới tính:</label>
+          <div class="col-md-7 d-flex justify-content-between pe-5">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="nu"
+                name="gender"
+                value="Nữ"
+                required
+              />
+              <label class="form-check-label fw-medium" for="nu">Nữ</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="nam"
+                name="gender"
+                value="Nam"
+                required
+              />
+              <label class="form-check-label fw-medium" for="nam">Nam</label>
+            </div>
+            <div class="form-check form-check-inline me-5">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="khac"
+                name="gender"
+                value="Khác"
+                required
+              />
+              <label class="form-check-label fw-medium" for="khac">Khác</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group row text-end ">
+          <div class="col-md-7 offset-md-3">
+            <button type="submit" class="btn btn-outline-teal mb-1 py-2 btn-grow-big">Lưu những thay đổi</button>
+          </div>
+        </div>
+        
+  
+      </div>
+
+      <div class="profile-picture-container mb-4 col-md-3">
+        
+        <div class="profile-picture">
+          <img *ngIf="previewUrl" [src]="previewUrl" alt="Profile Image" />
+          <img *ngIf="!previewUrl" src="assets/default-profile.png"/>
+          <svg *ngIf="!previewUrl" width="121" height="120" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="profile-svg">
+            <g id="PersonCircle" clip-path="url(#clip0_179_1494)">
+              <path id="Vector" d="M83 45C83 50.9674 80.6295 56.6903 76.4099 60.9099C72.1903 65.1295 66.4674 67.5 60.5 67.5C54.5326 67.5 48.8097 65.1295 44.5901 60.9099C40.3705 56.6903 38 50.9674 38 45C38 39.0326 40.3705 33.3097 44.5901 29.0901C48.8097 24.8705 54.5326 22.5 60.5 22.5C66.4674 22.5 72.1903 24.8705 76.4099 29.0901C80.6295 33.3097 83 39.0326 83 45Z" fill="#D9D9D9"/>
+              <path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M0.5 60C0.5 44.087 6.82141 28.8258 18.0736 17.5736C29.3258 6.32141 44.587 0 60.5 0C76.413 0 91.6742 6.32141 102.926 17.5736C114.179 28.8258 120.5 44.087 120.5 60C120.5 75.913 114.179 91.1742 102.926 102.426C91.6742 113.679 76.413 120 60.5 120C44.587 120 29.3258 113.679 18.0736 102.426C6.82141 91.1742 0.5 75.913 0.5 60ZM60.5 7.5C50.6133 7.50053 40.9277 10.2927 32.558 15.5552C24.1883 20.8177 17.4746 28.3366 13.1897 37.2465C8.90484 46.1563 7.2229 56.095 8.33749 65.9187C9.45208 75.7423 13.3179 85.0516 19.49 92.775C24.815 84.195 36.5375 75 60.5 75C84.4625 75 96.1775 84.1875 101.51 92.775C107.682 85.0516 111.548 75.7423 112.663 65.9187C113.777 56.095 112.095 46.1563 107.81 37.2465C103.525 28.3366 96.8117 20.8177 88.442 15.5552C80.0723 10.2927 70.3867 7.50053 60.5 7.5Z" fill="#D9D9D9"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_179_1494">
+                <rect width="120" height="120" fill="white" transform="translate(0.5)"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        
+
+        <label class="upload-button rounded my-3" for="profileImage">CHỌN ẢNH</label>
+
+        <input type="file" id="profileImage" accept="image/png, image/jpeg" (change)="onFileSelected($event)" hidden />
+        <div>
+          <div class="form-text text-muted align-self-start">Ảnh có dung lượng tối đa 1MB;</div>
+          <div class="form-text text-muted align-self-start">Định dạng: PNG, JPEG.</div>
+        </div>
+
+      </div>
+
+    </div>
+    
+    
+
+</form>
+</div>

@@ -1,0 +1,175 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+  <div class="container mt-5">
+    <!-- Order Progress -->
+    <div class="timeline">
+      <div 
+          class="timeline-item" 
+          [ngClass]="{
+              'completed': statusOrderIndex('Đang chuẩn bị hàng') < statusOrderIndex(selectedOrder.status),
+              'active': selectedOrder.status === 'Đang chuẩn bị hàng'
+          }">
+          <div class="timeline-icon">🛍️</div>
+          <div class="timeline-text">Đang chuẩn bị hàng</div>
+          <div class="timeline-date">22:30 9/11/2024</div>
+      </div>
+  
+      <div 
+          class="timeline-item" 
+          [ngClass]="{
+              'completed': statusOrderIndex('Đang giao hàng') < statusOrderIndex(selectedOrder.status),
+              'active': selectedOrder.status === 'Đang giao hàng'
+          }">
+          <div class="timeline-icon">🚚</div>
+          <div class="timeline-text">Đã giao cho ĐVVC</div>
+          <div class="timeline-date">10:30 10/11/2024</div>
+      </div>
+  
+      <div 
+          class="timeline-item" 
+          [ngClass]="{
+              'completed': statusOrderIndex('Giao hàng thành công') < statusOrderIndex(selectedOrder.status),
+              'active': selectedOrder.status === 'Giao hàng thành công'
+          }">
+          <div class="timeline-icon">📦</div>
+          <div class="timeline-text">Đã nhận được hàng</div>
+          <div class="timeline-date">14:30 12/11/2024</div>
+      </div>
+  
+      <div 
+          class="timeline-item" 
+          [ngClass]="{
+              'completed': statusOrderIndex('Đã hoàn thành') < statusOrderIndex(selectedOrder.status),
+              'active': selectedOrder.status === 'Đã hoàn thành'
+          }">
+          <div class="timeline-icon">⭐</div>
+          <div class="timeline-text">Đơn hàng đã hoàn thành</div>
+          <div class="timeline-date">22:30 12/11/2024</div>
+      </div>
+  </div>
+  
+  
+
+    <!-- Order Information -->
+    <div class="p-3 mb-4">
+      <h5 class="mb-3 text-center fw-bold mt-4">THÔNG TIN ĐƠN HÀNG</h5>
+      <p><strong>Mã đơn hàng:  &nbsp;</strong>  {{ selectedOrder._id }}</p>
+      <p><strong>Trạng thái đơn hàng:  &nbsp;</strong> <span class="p-2 fw-bold text-white  rounded btn btn-info"> {{ selectedOrder.status }}</span> </p>
+      <p><strong>Tên người nhận:  &nbsp;</strong>  {{ selectedOrder.customerInfo.name }}</p>
+      <p><strong>Email:  &nbsp;</strong>  {{ selectedOrder.customerInfo.email }}</p>
+      <div class="row">
+        <p class="col"><strong>Số điện thoại: &nbsp;</strong>  {{ selectedOrder.customerInfo.phone }}</p>
+        <div class="col text-end">
+            <button  class="btn btn-outline-teal btn-sm" style="width: 10rem;">Thay đổi SĐT</button>
+        </div>
+      </div>
+      <div class="row">
+        <p class="col-8"><strong>Địa chỉ nhận hàng: &nbsp;</strong> {{ selectedOrder.customerInfo.address }}</p>
+        <div class="col text-end">
+            <button class="btn btn-outline-teal btn-sm" style="width: 10rem;">Thay đổi địa chỉ</button>
+        </div>
+
+      </div>
+      <div class="d-flex gap-3">
+        <button class="btn btn-dark btn-sm ms-auto w-25 rounded">Hủy đơn hàng</button>
+      </div>
+    </div>
+
+    <div style="border-top: 2px dashed var(--pcf-teal); width: 100%; margin: 20px 0;"></div>
+
+    <!-- Product Information -->
+    <div class="rounded p-3">
+      <h5 class="mb-3 text-center fw-bold">Chi tiết sản phẩm</h5>
+      
+      <div *ngFor="let product of selectedOrder.orderDetail">
+
+        <div class="row mt-3">
+
+          <div class="col-md-2" style="overflow: hidden;">
+            <img [src]="product.productId.images[0]" class="img-fluid img-product" alt="">
+          </div>
+  
+          <div class="col">
+            <div>
+  
+  
+              <p><strong>{{ product.productId.productName }}</strong></p>
+              <div class="row">
+                <p class="col">Size: {{ product.size || 'N/A' }}</p>
+                <div class="col text-end">x{{ product.quantity }}</div>
+              </div>
+            </div>
+            <p class="text-end">
+              <del class="text-secondary">
+                {{ ((product.productId.price / (1 - product.productId.discount / 100)) | ceil:10000) | number:'1.0-0' }} VNĐ
+              </del>
+              <span class="ms-3 fw-bold">
+                {{ product.productId.price | number:'1.0-0' }} VNĐ
+              </span>
+            </p>
+          </div>
+        
+          <div class="col-5">
+            <div class="d-flex justify-content-between">
+              <div class="me-3">
+                <button class="btn btn-outline-teal btn-sm mb-3 w-100" style="height: 2rem;" (click)="onRateClick()">Đánh giá</button>
+                <button class="btn btn-outline-dark rounded btn-sm w-100">Yêu cầu đổi hàng</button>
+              </div>
+              <div>
+                <button class="btn btn-teal btn-info btn-sm rounded mb-3 w-100" style="height: 2rem;">Mua lại</button>
+                <button class="btn btn-danger btn-sm rounded w-100">Yêu cầu hoàn tiền</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      
+      
+
+    </div>
+
+    <hr>
+
+    <!-- Summary -->
+    <div class="mt-4 rounded p-3">
+      <ul class="list-unstyled">
+        <li class="row justify-content-end">
+            <strong class="col-3">Tổng tiền đơn hàng:</strong> 
+            <strong class="col-2 text-end">{{ selectedOrder.total | number:'1.0-0' }} VNĐ</strong>
+        </li>
+        <li class="row justify-content-end" >
+            <strong class="col-3">Phí vận chuyển:</strong> 
+            <strong class="col-2 text-end">
+                0
+            </strong>
+            
+        </li>
+        <li class="row justify-content-end">
+            <strong class="col-3">Giảm giá:</strong> 
+            <strong class="col-2 text-end">
+                0
+            </strong>
+
+        </li>
+        <li class="row justify-content-end">
+            <strong class="col-3">Thành tiền:</strong> 
+            <strong class="col-2 text-end">
+              {{ selectedOrder.total | number:'1.0-0' }} VNĐ
+            </strong>
+
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <p class="row justify-content-end">
+        <strong class="col-3">Phương thức thanh toán:</strong>
+        <strong class="col-3 text-end"> 
+          {{ selectedOrder.paymentMethod }}
+        </strong>
+    </p>
+  </div>
+

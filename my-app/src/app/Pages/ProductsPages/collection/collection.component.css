@@ -1,0 +1,10 @@
+/* src/app/components/collection/collection.component.css */
+.collection-item {
+    text-align: center;
+}
+.collection-image {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    filter: brightness(0.97);
+}

@@ -1,0 +1,27 @@
+/* Tạo dạng lưới cho các nút kích cỡ trong dropdown */
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Tạo 4 cột */
+    gap: 8px; /* Khoảng cách giữa các ô */
+  }
+  
+  /* Tạo kiểu cho nút kích cỡ để dễ dàng nhìn thấy nút đang được chọn */
+  .size-grid .btn {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+  
+  .size-grid .btn.active {
+    background-color: #007bff;
+    color: white;
+  }
+
+  /* Ẩn dấu mũi tên lên/xuống của input number trên Chrome, Safari, Edge */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  

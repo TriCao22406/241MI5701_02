@@ -1,0 +1,21 @@
+
+
+.btn-outline-dark:hover {
+    background-color: white!important;
+    color: black;
+    border: 2px solid black!important;
+}
+
+.selected-border {
+    background-color: white!important;
+    color: black;
+    border: 2px solid black!important;
+}
+
+.img-product {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    transform: scale(1.2);
+}

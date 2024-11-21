@@ -1,0 +1,51 @@
+.img-fluid {
+  position: relative;
+  top: 8%;
+  height: 80%;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+.btn-zalo {
+  background-color: var(--pcf-zalo);
+  color: white;
+}
+
+.btn-google {
+  background-color: var(--pcf-google);
+  color: white;
+}
+
+.btn-zalo,
+.btn-google {
+  font-weight: bold;
+  width: 60%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+}
+
+.btn-zalo:hover,
+.btn-google:hover {
+  color: black;
+  filter: brightness(1.2);
+}
+
+.btn-teal {
+  width: 30%;
+}
+
+.card-body {
+  padding-top: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

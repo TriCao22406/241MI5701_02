@@ -1,0 +1,15 @@
+<div class="container my-5">
+    <h2 class="text-center fw-bold">BỘ SƯU TẬP</h2>
+    <div class="row mt-4">
+        <div class="d-flex flex-column col-md-4 collection-item mb-4" *ngFor="let item of collection">
+            <img [src]="item.ImageURL[0]" [alt]="item.name" class="collection-image">
+            <h5 class="fw-bold mt-3">{{ item.CollectionName }}</h5>
+            <div class="fs-7 mb-3">{{ item.Description }}</div>
+            <button 
+                class="btn btn-teal btn-info btn-grow-big mt-auto" 
+                (click)="goToCollection(replaceSpacesWithHyphen(item.CollectionName2))">
+                Xem thêm
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+.bg-gray {
+  background-color: #d9d9d9;
+}
+
+.material-icons {
+  font-size: 20px;
+  color: #333;
+}
+
+.text-decoration-none:hover {
+  background-color: #969696;
+  border-radius: 4px;
+}
+
+.nav-account-sidebar-active {
+  color: var(--pcf-dark-teal) !important;
+}
+.nav-account-sidebar-active .nav-account-sidebar-text {
+  text-decoration: underline !important;
+}
+.nav-account-sidebar-active .nav-account-sidebar-icon {
+  color: var(--pcf-dark-teal) !important;
+}

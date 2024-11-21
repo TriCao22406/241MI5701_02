@@ -1,0 +1,73 @@
+<!-- review.component.html -->
+
+<h3 class="fw-bold">ĐÁNH GIÁ SẢN PHẨM</h3>
+
+
+<div class="row mt-4">
+    
+    <div class="col-md-3">
+        <img [src]="product.images[0]" alt="Product Image" class="img-fluid" style="border: 2px solid rgb(129, 128, 128);">
+    </div>
+    <div class="col-md-9 mt-3">
+        <h4 class="fw-bold">{{ product.productName }}</h4>
+        <p class="mb-0">Chất liệu: {{ product.material }}</p>
+        <p>Mã sản phẩm: {{ product.productCode }}</p>
+    </div>
+
+</div>
+
+<div class="row justify-content-center">
+    
+    <div class="product-rating d-flex align-items-center justify-content-between">
+        <p class="my-0 fs-5 fw-bold">Chất lượng sản phẩm</p>
+
+
+        <div class="star-rating">
+            <input type="radio" name="rating" id="star5" value="5">
+            <label for="star5">★</label>
+            <input type="radio" name="rating" id="star4" value="4">
+            <label for="star4">★</label>
+            <input type="radio" name="rating" id="star3" value="3">
+            <label for="star3">★</label>
+            <input type="radio" name="rating" id="star2" value="2">
+            <label for="star2">★</label>
+            <input type="radio" name="rating" id="star1" value="1">
+            <label for="star1">★</label>
+        </div>                      
+        </div>
+        
+        <div class="col-md-10 d-flex flex-column text-center">
+
+        <div class="add-media">
+            <label class="media-input btn-grow-big p-3 py-2 me-4 rainbow-box">
+                ✦[◉°]✦ <br> Thêm hình ảnh
+                <input type="file" accept="image/*" style="display: none;">
+            </label>
+            
+            <label class="media-input btn-grow-big p-3 py-2 rainbow-box2">
+                <svg width="31" height="20" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_179_2657)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 9.375C0.5 8.38044 0.895088 7.42661 1.59835 6.72335C2.30161 6.02009 3.25544 5.625 4.25 5.625H18.3125C19.222 5.62489 20.1006 5.95536 20.7846 6.55486C21.4687 7.15437 21.9115 7.98204 22.0306 8.88375L27.8619 6.2925C28.1473 6.16532 28.46 6.11149 28.7715 6.13591C29.083 6.16033 29.3835 6.26221 29.6456 6.4323C29.9078 6.6024 30.1232 6.83531 30.2724 7.10986C30.4216 7.38441 30.4999 7.6919 30.5 8.00437V21.9956C30.4997 22.3079 30.4215 22.6151 30.2724 22.8894C30.1233 23.1637 29.908 23.3965 29.6461 23.5665C29.3843 23.7366 29.0841 23.8385 28.7728 23.8631C28.4616 23.8878 28.1491 23.8343 27.8638 23.7075L22.0306 21.1163C21.9115 22.018 21.4687 22.8456 20.7846 23.4451C20.1006 24.0446 19.222 24.3751 18.3125 24.375H4.25C3.25544 24.375 2.30161 23.9799 1.59835 23.2766C0.895088 22.5734 0.5 21.6196 0.5 20.625V9.375Z" fill="black"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_179_2657">
+                    <rect width="30" height="30" fill="white" transform="translate(0.5)"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                        <br> Thêm video
+                <input type="file" accept="video/*" style="display: none;">
+            </label>
+            
+            </div>
+            
+            <textarea class="form-control mt-3" rows="8" placeholder="Hãy chia sẻ cảm nhận của bạn về sản phẩm này của Pacifist nhé!"></textarea>
+            
+            <div class="my-3 align-self-end w-50 d-flex">
+            <a class="btn btn-outline-teal mx-3 btn-grow-big w-100" (click)="onGoBack()" >Trở lại</a>
+            <button class="btn btn-teal btn-info btn-grow-big  w-100" (click)="submitReview()">Hoàn thành</button>
+            </div>
+
+        </div>
+
+</div>

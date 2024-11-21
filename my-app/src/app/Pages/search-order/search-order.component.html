@@ -1,0 +1,64 @@
+<div class="container">
+    
+<!-- Purchase History Table -->
+<div class="d-flex justify-content-between mb-5 ">
+    <h4 class="fw-bold">TRA CỨU ĐƠN HÀNG</h4>
+    <div class="input-group w-25">
+        <span
+          class="input-group-text fs-4 rounded-start-3 py-0 pe-0 pb-1"
+          style="background-color: white; border-right: none;"
+          >˖⌕ ۫</span
+        >
+        <input
+          type="text"
+          class="form-control fs-6 rounded-end-3 py-0 border-start-0"
+          placeholder="Tìm kiếm đơn hàng"
+          #searchInput
+          (keyup.enter)="searchOrder(searchInput.value)"
+        />
+        <button
+          class="btn btn-outline-primary"
+          (click)="searchOrder(searchInput.value)"
+        >
+          Search
+        </button>
+      </div>
+      
+  </div>
+  
+  <table class="table text-center pl-5" >
+    <thead style="border-bottom: 4px solid black;">
+      <tr class="fs-6">
+        <th scope="col" style="width: 20%;">Mã đơn hàng</th>
+        <th scope="col" style="width: 15%;">Trạng thái</th>
+        <th scope="col" style="width: 25%;">Chi tiết</th>
+        <th scope="col" style="width: 15%;">Tổng tiền</th>
+        <th scope="col" style="width: 25%;">Ngày nhận hàng dự kiến</th>
+      </tr>
+    </thead>
+    <tbody class="border-top">
+      <tr *ngFor="let order of orders" style="height: 7rem;" class="order-row align-items-center">
+        <!-- Mã đơn hàng -->
+        <td>{{ order.orderId || order._id }}</td>
+  
+        <!-- Trạng thái -->
+        <td>{{ order.status }}</td>
+  
+        <!-- Chi tiết sản phẩm -->
+        <td  class="py-3">
+          <div *ngFor="let detail of order.orderDetail">
+            {{ detail.productName || detail.productId.productName }} ({{ detail.size }}) x{{ detail.quantity }}
+          </div>
+        </td>
+  
+        <!-- Tổng tiền -->
+        <td>{{ order.total | number:'1.0-0' }} VNĐ</td>
+  
+        <!-- Ngày nhận hàng dự kiến -->
+        <td>{{ (order.expectedDate || order.timer.expectedDate) | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</div>

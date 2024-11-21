@@ -1,0 +1,47 @@
+      <div class="row">
+        <div class="col">
+          <h3>Kho Voucher ưu đãi</h3>
+        </div>
+        <div class="col-auto">
+          <div class="input-group">
+            <span
+              class="input-group-text fs-4 rounded-start-3 py-0 pe-0 pb-1"
+              style="background-color: white; border-right: none"
+              >˖⌕ ۫
+            </span>
+            <input
+              type="text"
+              [(ngModel)]="keyword"
+              (input)="handleSearch()"
+              class="form-control fs-6 rounded-end-3 py-0 border-start-0"
+              placeholder="Nhập mã voucher"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="voucher.length" class="row g-2 mt-2">
+        <div class="col-6 col-lg-4" *ngFor="let voucher of voucher">
+          <div class="d-flex border border-1 rounded h-100">
+            <div class="h-100">
+              <img
+                [src]="voucher.image"
+                class="rounded-start"
+                alt="Voucher Image"
+                style="height: 100%; width: 90px"
+              />
+            </div>
+            <div class="px-3 py-2 flex-grow-1">
+              <h6 class="m-0">Mã: {{ voucher.voucherId }}</h6>
+              <p class="m-0">{{ voucher.discountDescription }}</p>
+              <p class="m-0">{{ voucher.minOrderValue }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p *ngIf="!voucher.length" class="mt-2">Không có voucher</p>
+      <div *ngIf="voucher.length" class="mt-4 text-center">
+        <button class="btn btn-teal btn-info" (click)="handleBuyNow()">
+          Mua ngay
+        </button>
+      </div>

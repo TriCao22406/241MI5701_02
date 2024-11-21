@@ -1,0 +1,179 @@
+<div class="container">
+  <div class="row">
+    <!-- Filter Sidebar -->
+    <div class="col-md-3 filter-sidebar">
+      <h5>Bộ lọc</h5>
+      <hr />
+
+      <!-- Product Category -->
+      <h6>Dòng sản phẩm</h6>
+      <div class="form-check" *ngFor="let category of categories">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [value]="category"
+          (change)="onFilterChange()"
+          [(ngModel)]="selectedCategories[category]"
+        />
+        <label class="form-check-label">{{ category }}</label>
+      </div>
+
+      <hr class="dashed" />
+
+      <!-- Material -->
+      <h6>Chất liệu</h6>
+      <div class="form-check" *ngFor="let material of materials">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [value]="material"
+          (change)="onFilterChange()"
+          [(ngModel)]="selectedMaterials[material]"
+        />
+        <label class="form-check-label">{{ material }}</label>
+      </div>
+
+      <hr class="dashed" />
+
+      <!-- Sort Options -->
+      <h6>Lọc theo</h6>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sort" id="newest" />
+        <label class="form-check-label" for="newest">Mới nhất</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="sort"
+          id="bestselling"
+        />
+        <label class="form-check-label" for="bestselling">Bán chạy</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sort" id="popular" />
+        <label class="form-check-label" for="popular">Phổ biến</label>
+      </div>
+
+      <hr class="dashed" />
+
+      <h6>Giá cả (VNĐ)</h6>
+      <!-- Price Input -->
+      <div class="d-flex justify-content-between mb-2">
+        <input
+          type="number"
+          class="form-control"
+          style="width: 40%; text-align: center"
+          [(ngModel)]="minPriceInput"
+          (ngModelChange)="onMinPriceInputChange($event)"
+          [min]="sliderOptions.floor || 500000"
+          [max]="sliderOptions.ceil || 100000000"
+          [step]="sliderOptions.step"
+          placeholder="Min"
+        />
+        <span class="mt-2">-</span>
+        <input
+          type="number"
+          class="form-control"
+          style="width: 45%; text-align: center"
+          [(ngModel)]="maxPriceInput"
+          (ngModelChange)="onMaxPriceInputChange($event)"
+          [min]="sliderOptions.floor || 500000"
+          [max]="sliderOptions.ceil || 100000000"
+          [step]="sliderOptions.step"
+          placeholder="Max"
+        />
+      </div>
+
+      <!-- Price Slider -->
+      <ngx-slider
+        [(value)]="priceRange.min"
+        [(highValue)]="priceRange.max"
+        [options]="sliderOptions"
+        (userChangeEnd)="onFilterChange()"
+      >
+      </ngx-slider>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="col-md-9">
+      <div class="d-flex justify-content-end align-items-center mb-3">
+        <select class="form-select w-auto" (change)="sortProducts($event)">
+          <option value="">Sắp xếp theo</option>
+          <option value="priceAsc">Giá tăng dần</option>
+          <option value="priceDesc">Giá giảm dần</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let product of visibleProducts">
+          <div class="product-card my-3 position-relative">
+            <!-- Heart Icon -->
+            <div class="heart-container">
+              <input
+                type="checkbox"
+                id="heart-{{ product.productCode }}"
+                (change)="toggleHeart($event, product)"
+              />
+              <!-- Pass the event and the product object -->
+              <label
+                for="heart-{{ product.productCode }}"
+                class="heart-label"
+              ></label>
+            </div>
+
+            <img
+              [src]="product.images[0]"
+              class="img-fluid"
+              [alt]="product.productName"
+              (click)="goToProductDetail(product.productCode)"
+            />
+            <div class="product-details">
+              <h6 class="fw-bold">{{ product.productName }}</h6>
+              <p class="small-text mb-1 material">{{ product.material }}</p>
+
+              <div
+                class="d-flex flex-column justify-content-end"
+                style="height: 100%"
+              >
+                <div class="product-info">
+                  <p class="fw-bold price fs-6">
+                    {{ product.price | number : "1.0-0" }} VNĐ
+                    <br />
+                    <span class="fw-semibold" style="font-size: 0.83rem">
+                      <span *ngIf="product.discount > 0" class="text-decoration-line-through text-muted">
+                        {{ ((product.price / (1 - product.discount / 100)) | ceil:10000) | number:'1.0-0' }} VNĐ
+                      </span>
+                      <span
+                        *ngIf="product.discount > 0"
+                        class="badge text-bg-danger mb-1 ms-2"
+                        style="font-size: 0.8rem"
+                      >
+                        Giảm {{ product.discount }}%
+                      </span>
+                    </span>
+                  </p>
+                </div>
+                <!-- Click to ProductDetail -->
+                <button
+                  class="btn btn-info btn-teal btn-buy"
+                  (click)="goToProductDetail(product.productCode)"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <button
+            class="btn btn-teal btn-load-more"
+            (click)="loadMoreProducts()"
+          >
+            Còn nữa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

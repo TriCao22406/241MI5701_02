@@ -1,0 +1,23 @@
+[
+    {
+      "name": "Slider Image 1",
+      "image": "assets/images/homepage/5.png",
+      "link": "/collections/lock"
+    },
+    {
+      "name": "Slider Image 2",
+      "image": "assets/images/homepage/6.png",
+      "link": "/collections/t"
+    },
+    {
+      "name": "Slider Image 3",
+      "image": "assets/images/homepage/7.png",
+      "link": "/categories/necklace"
+    },
+    {
+      "name": "Slider Image 3",
+      "image": "assets/images/homepage/8.png",
+      "link": "/categories/necklace"
+    }
+  ]
+  

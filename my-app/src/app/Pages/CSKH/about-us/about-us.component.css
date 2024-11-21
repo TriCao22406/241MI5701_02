@@ -1,0 +1,150 @@
+/* about-us.component.css */
+
+div {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2.2rem;
+    /* 32px tương đương với 2rem */
+    margin-bottom: 1.5rem;
+}
+
+.sub-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    /* 24px tương đương với 1.5rem */
+    margin-bottom: 1rem;
+}
+
+.content-text {
+    font-size: 1.15rem;
+    /* 16px tương đương với 1rem */
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.blockquote {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.3rem;
+    /* 20px tương đương với 1.25rem */
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 4px solid #8CC2DC;
+}
+
+.feature-icon {
+    margin-bottom: 1.5rem;
+}
+
+.feature-title {
+    font-weight: bold;
+    font-size: 1.125rem;
+    /* 18px tương đương với 1.125rem */
+    margin-top: 0.5rem;
+}
+
+.btn-outline-primary {
+    font-size: 1rem;
+    /* 16px tương đương với 1rem */
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #8CC2DC;
+    color: #8CC2DC;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #8CC2DC;
+    color: #fff;
+}
+
+.img3-container {
+    position: relative;
+    display: flex; /* Sử dụng flex để đảm bảo phần văn bản và hình ảnh nằm cạnh nhau */
+    align-items: center; /* Căn giữa văn bản và hình ảnh theo chiều dọc */
+    height: 45vh;
+    overflow: hidden;
+}
+
+.img3 {
+    max-height: 45vh;
+    width: 100%;
+    object-fit: cover;
+    /* Đảm bảo phần dư bị cắt */
+    overflow: hidden;
+    /* Ẩn phần dư của hình ảnh */
+    display: block;
+    margin: auto;
+    /* Căn giữa hình ảnh */
+}
+
+.text3 {
+    position: relative; /* Để tránh vị trí tuyệt đối gây lỗi đè lên hình ảnh */
+    color: black;
+    text-align: left;
+    max-width: 50%; /* Đảm bảo phần văn bản chiếm không quá một nửa vùng chứa */
+}
+
+.img2 {
+    max-height: 50vh;
+    /* Chiều cao cố định là 100px */
+    width: 100%;
+    object-fit: cover;
+    /* Đảm bảo phần dư bị cắt */
+    overflow: hidden;
+    /* Ẩn phần dư của hình ảnh */
+    display: block;
+    margin: auto;
+    /* Căn giữa hình ảnh */
+}
+
+.img4{
+    height: 30vh;
+    /* Chiều cao cố định là 100px */
+    max-width: 100%;
+    object-fit: cover;
+    /* Đảm bảo phần dư bị cắt */
+    display: block;
+    margin: auto;
+    /* Căn giữa hình ảnh */
+}
+
+.img3-container {
+    position: relative;
+    display: flex; /* Sử dụng flex để đảm bảo phần văn bản và hình ảnh nằm cạnh nhau */
+    align-items: center; /* Căn giữa văn bản và hình ảnh theo chiều dọc */
+    height: 45vh;
+    overflow: hidden;
+}
+
+.img3 {
+    max-height: 40vh;
+    /* Chiều cao cố định là 100px */
+    width: 100%;
+    object-fit: cover;
+    /* Đảm bảo phần dư bị cắt */
+    overflow: hidden;
+    /* Ẩn phần dư của hình ảnh */
+    display: block;
+    margin: auto;
+    /* Căn giữa hình ảnh */
+}
+
+.icon{
+    width: 30%;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}

@@ -1,0 +1,176 @@
+/* Custom Styles */
+body {
+    font-family: noto serif;
+    color: #333;
+}
+
+/* Hero Section */
+.hero img {
+    width: 100px;
+    margin: 5px;
+}
+
+/* Blog Posts */
+.blog-posts .card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+.blog-posts .card-text {
+    font-size: 16px;
+    
+}
+
+/* Sidebar */
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer p {
+    color: #555;
+}
+
+/* In đậm chữ BÀI VIẾT MỚI */
+h3.h5 {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    font-size: 20px;
+}
+
+/* Định dạng cho các thẻ <li> trong class list-unstyled */
+.list-unstyled li a {
+    color: black;
+    text-decoration: underline;
+    
+    
+}
+
+.xem-them {
+    background-color: #C2E8F5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    height: 50px;
+}
+
+.btn-more {
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #C2E8F5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.btn-more:hover {
+    background-color: #8CC2DC;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+/* Thiết lập kích thước cho thẻ card và hình ảnh */
+.blog-posts .card {
+    width: 750px;
+    overflow: hidden;
+}
+.blog-posts .card img {
+    width: 310px;
+    height: 220px;
+    object-fit: cover;
+}
+.blog-posts .card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Căn giữa các mục trong list-unstyled */
+.list-unstyled li {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.list-unstyled li:hover a{
+    color: #C2E8F5;
+}
+
+.card {
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 0.2s ease-in-out;
+  }
+  
+.card-title:hover {
+    color: #C2E8F5
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #8CC2DC;
+    border: none;
+    margin: 0 5px;
+}
+
+.carousel-indicators .active {
+    background-color: #8CC2DC;
+}
+
+.carousel-inner {
+    display: flex;
+    align-items: center;
+    height: 50vh;
+}
+
+@media (max-width: 600px) {
+    .carousel-inner {
+        display: flex;
+        align-items: center;
+        height: 40vh;
+        /* Chiều cao carousel nhỏ hơn cho màn hình điện thoại */
+    }
+}
+
+.carousel-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Giữ tỷ lệ của hình ảnh và không làm giãn lớn */
+    object-position: center;
+    /* Căn giữa hình ảnh theo cả chiều ngang và chiều dọc */
+    overflow: hidden;
+    /* Ẩn phần dư của hình ảnh nếu có */
+    margin-top: 20px;
+    object-position: center 20%; /* Center horizontally, move 20% down vertically */
+
+    /* Đảm bảo hình ảnh được căn giữa trong khung carousel */
+}

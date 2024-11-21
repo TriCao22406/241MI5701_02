@@ -1,0 +1,3 @@
+div {
+    overflow: hidden; /* Prevent content overflow during transitions */
+}

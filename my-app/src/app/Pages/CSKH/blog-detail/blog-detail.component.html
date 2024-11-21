@@ -1,0 +1,59 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Nội dung bài blog, chiếm 8 cột -->
+        <div class="col-md-8">
+            <div class="blog-content">
+                <div [innerHTML]="blogContent?.content" ></div>
+            </div>
+        </div>
+
+        <!-- Sidebar, chiếm 3 cột với khoảng cách offset -->
+        <aside class="col-md-3 offset-md-1 sidebar-custom">
+            <div class="card p-3 text-center">
+                <h3 class="h5 font-weight-bold">Có thể bạn muốn xem</h3>
+                <ul class="list-unstyled">
+                    <li *ngFor="let post of relatedPosts" class="mb-3">
+                        <a [routerLink]="['/Blog', post.id]" class="related-post d-flex align-items-start">
+                          <!-- <div class="d-flex align-items-center mb-3"> -->
+                            <img [src]="post.TitleImage" alt="{{ post.Title }}">
+                            <span class="related-title">{{ post.Title }}</span>
+                          <!-- </div> -->
+                        </a>
+                      </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Phần yêu thích, chia sẻ và bình luận -->
+    <div class="row mt-5">
+        <!-- Phần yêu thích và chia sẻ -->
+        <div class="col-md-8 d-flex justify-content-between align-items-center">
+            <div class="like-section">
+                <span class="heart-icon">❤️</span>
+                <span class="like-count">20</span>
+            </div>
+            <div class="share-section">
+                <span>Chia sẻ</span>
+                <a href="#" class="share-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="share-icon"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="share-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-icon"><i class="fas fa-link"></i></a>
+            </div>
+        </div>
+
+        <!-- Phần bình luận -->
+        <div class="col-md-8 mt-4">
+            <h5 class="font-weight-bold comment-title">Bình luận (0)</h5>
+            <div class="comment-section">
+                <div class="comment-input d-flex align-items-center">
+                    <img src="assets/images/blog_detail/PersonCircle.png" alt="User Icon" class="user-icon">
+                    <textarea type="text" placeholder="Để lại bình luận của bạn..." class="form-control"></textarea>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

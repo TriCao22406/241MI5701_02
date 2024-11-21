@@ -1,0 +1,70 @@
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #6c757d; /* Màu xám nhạt cho giống với hình */
+    padding: 0 0.5rem;
+}
+
+.breadcrumb {
+    font-size: 1rem; /* Tăng kích thước chữ cho toàn bộ breadcrumb */
+}
+
+.breadcrumb-item a {
+color: rgba(164, 164, 164, 1);
+text-decoration: none;
+}
+
+.breadcrumb-item.active {
+color: rgba(0, 0, 0, 1);
+font-weight: 700;
+}
+
+.breadcrumb-link {
+    cursor: pointer; /* Hiện trỏ tay khi di chuột vào liên kết */
+    text-decoration: none; /* Xóa gạch chân mặc định của liên kết nếu muốn */
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline; /* Thêm gạch chân khi di chuột vào để nhấn mạnh liên kết */
+}
+
+@media (max-width: 61.9375rem) {
+.breadcrumbs {
+    padding: 0.8125rem 1.25rem;
+}
+}
+
+input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+.btn-buyNow {
+    background-color: var(--pcf-teal);
+    color: var(--pcf-white);
+}
+
+.btn-buyNow:hover {
+    color: black;
+}
+
+.btn-favor {
+    background-color: var(--pcf-teal);
+    color: var(--pcf-white);
+}
+
+.btn-favor:hover {
+    color: black;
+}
+
+
+.btn:hover {
+    transition: transform 0.3s ease; /* Smooth transition */
+    transform: scale(1.05);
+}

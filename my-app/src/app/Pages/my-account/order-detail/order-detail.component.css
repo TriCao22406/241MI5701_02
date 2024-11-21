@@ -1,0 +1,87 @@
+/* Timeline container */
+.timeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+/* Timeline item */
+.timeline-item {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+/* Line between icons */
+.timeline-item:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 26%;
+    left: -32%;
+    width: calc(100% - 35%);
+    height: 4px;
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 0;
+}
+
+/* Timeline icon */
+.timeline-icon {
+    width: 4rem;
+    height: 4rem;
+    background-color: #e0e0e0;
+    color: #888;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hide text and date by default */
+.timeline-text, .timeline-date {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s, color 0.3s;
+}
+
+/* Show text and date for active or completed items */
+.timeline-item.active .timeline-text,
+.timeline-item.active .timeline-date,
+.timeline-item.completed .timeline-text,
+.timeline-item.completed .timeline-date {
+    visibility: visible;
+    opacity: 1;
+    color: var(--pcf-green);
+}
+
+.timeline-item.active .timeline-text,
+.timeline-item.active .timeline-date {
+    font-weight: bold;
+}
+
+/* Active and completed timeline items */
+.timeline-item.active .timeline-icon,
+.timeline-item.completed .timeline-icon {
+    background-color: var(--pcf-green);
+    color: #fff;
+}
+
+.timeline-item.active::before,
+.timeline-item.completed::before {
+    background-color: var(--pcf-green);
+}
+
+/* Product image */
+.img-product {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.2);
+}

@@ -1,0 +1,109 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Để header luôn hiển thị phía trên */
+  }
+
+.header-top {
+    margin-right: 2rem;
+
+}
+
+.header-top .nav-item {
+    margin-right: 2.5rem;
+}
+
+.header-1 {
+    background-color: #8CC2DC;
+}
+
+.header-2 {
+    background-color: #ffffff; /* Màu nền của header 2
+    /* border-bottom: 1px solid #dedede;  */
+    font-family: 'Times New Roman', serif; /* Font chữ mang tính cổ điển cho logo */
+}
+
+.nav-link {
+    color: #333; /* Màu chữ */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #000; /* Đổi màu khi hover */
+}
+
+.brand-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    color: #333;
+}
+
+.search-container {
+    border: 1px solid #ccc; /* Đường viền cho khung tìm kiếm */
+    border-radius: 5px; /* Bo tròn góc */
+}
+
+.search-box {
+    border: none; /* Bỏ đường viền mặc định */
+    box-shadow: none; /* Bỏ shadow */
+}
+
+.header-2 .navbar-nav .nav-item {
+    margin-left: 15px; /* Thêm khoảng cách giữa các mục */
+    margin-right: 15px; /* Thêm khoảng cách giữa các mục */
+}
+
+.fw-bold {
+    font-weight: 700!important;
+}
+
+/* Ensure the dropdown content is hidden by default */
+.dropdown-menu-arrow {
+    transform: rotate(-90deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+    padding: 0;
+}
+
+.nav-link:hover {
+    transition: all 0.1s;
+    color: var(--pcf-dark-teal);
+}
+
+.dropdown:hover .nav-link {
+    transition: all 0.1s;
+
+    color: var(--pcf-dark-teal);
+}
+
+/* Make the dropdown appear on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Style the dropdown items */
+.dropdown-item {
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: var(--pcf-teal);
+}
+
+/* Optional: Style the nav item to position dropdown properly */
+.nav-item {
+    position: relative;
+}

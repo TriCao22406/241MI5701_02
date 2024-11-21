@@ -1,0 +1,148 @@
+.row {
+    transition: all 0.5s ease; /* Smooth transition for row repositioning */
+}
+
+.filter-sidebar {
+    border-right: 1px solid #ddd;
+}
+
+/* Product card styling */
+.product-card {
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    padding-bottom: 0;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.4s ease, height  0.8s ease;
+
+    min-height: fit-content;
+    height: 25rem;
+
+}
+
+.product-card:hover {
+    border: 2px solid var(--pcf-teal);
+    transform: translateY(-20px);
+    height: 28rem;
+    min-height: fit-content;
+    padding: 1rem;
+    /* min-height: fit-content; Slight movement on hover */
+}
+
+.product-card img {
+    width: 83%;
+    height: auto;
+}
+
+.product-card img:hover {
+    cursor: pointer;
+}
+
+/* Product details styling */
+.product-details {
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0rem;
+}
+
+.product-card button {
+    opacity: 0; /* Start hidden */
+    transform: translateY(10px); /* Position slightly down initially */
+    visibility: hidden; /* Prevent interaction when hidden */
+    transition: opacity 0.5s ease, transform 0.5s, position 1s;
+    position: absolute; /* Take it out of the flow */
+}
+
+
+.product-card:hover button {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide into place */
+    visibility: visible; /* Make interactable */
+    position: relative;
+}
+
+
+.product-card:hover button:hover {
+    transform: scale(1.1);
+}
+ 
+.product-card:hover p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.btn:hover {
+    transition: transform 0.3s ease; /* Smooth transition */
+    transform: scale(1.1);
+}
+
+.btn-buy {
+    width: 80%;
+    min-width: fit-content;
+    margin-top: 0.5rem;
+    padding-bottom: auto;
+    border-radius: 13px;
+}
+
+
+.btn-load-more {
+    border: 3px solid transparent;
+    width: 20%;
+}
+
+.btn-load-more:hover {
+    background-color: white;
+    border: 3px solid var(--pcf-teal); /* Sets the border color and width */
+    color: #000000; /* Optional: Adjust text color if needed */
+}
+
+.small-text {
+    font-size: 0.85rem;
+}
+
+
+.heart-container {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+  }
+  
+  .heart-container input{
+    display: none
+  }
+
+  .heart-label {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .heart-label::before {
+    content: '♡'; /* Default heart symbol */
+    font-size: 2rem;
+    color: var(--pcf-dark-teal);
+  }
+
+
+  .heart-label:hover {
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.4), 0 0 6px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2); /* Subtle glowing effect */
+}
+  
+
+
+  input[type="checkbox"]:checked + .heart-label::before {
+    content: '❤︎'; /* Heart symbol when checked */
+    color: var(--pcf-teal);
+    transform: scale(1.2);
+    font-size: 1.5rem;
+  }
+  
+  
+  
+  

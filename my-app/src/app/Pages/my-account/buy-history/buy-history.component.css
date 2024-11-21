@@ -1,0 +1,40 @@
+.table th, .table td {
+    vertical-align: middle;
+  }
+  
+.table th {
+    padding-bottom: 1rem;;
+  }
+
+.table td {
+    height: 4rem;
+    white-space: pre-line;
+
+}
+
+/* buy-history.component.css */
+div {
+  overflow: hidden; /* Prevent content overflow during transitions */
+  position: relative; /* Ensure child animations are positioned correctly */
+}
+
+.go-back:hover {
+  background-color: var(--pcf-dark-teal); 
+  color: white;
+ }
+
+ .order-row:hover td:nth-child(-n+4) {
+  filter: brightness(0.95);
+  cursor: pointer;
+}
+
+.order-row:hover td:nth-child(4-n+6) {
+  background-color: transparent;
+}
+
+/* Style the 5th column specifically */
+.order-row:hover td:nth-child(4-n+6):hover {
+  background-color: transparent;
+}
+
+
