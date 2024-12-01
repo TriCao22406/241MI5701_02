@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+  }
+  
+  .content {
+    margin-left: 220px; /* Khoảng cách bằng với chiều rộng của sidebar */
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .product-detail {
+    width: 400px; /* Tăng chiều rộng phần thông tin chi tiết */
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    background-color: #f9f9f9;
+    position: relative;
+    flex-shrink: 0; /* Đảm bảo phần chi tiết không bị ép nhỏ */
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545; /* Màu đỏ cho nút "Đóng" */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 1; /* Đảm bảo nút "Đóng" luôn hiển thị phía trước */
+  }
+  
+  .close-button:hover {
+    background-color: #c82333; /* Màu đậm hơn cho nút "Đóng" khi rê chuột vào */
+  }
+  

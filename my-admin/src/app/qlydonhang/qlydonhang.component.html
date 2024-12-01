@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="d-flex">
+      <!-- Sidebar -->
+      <div class="sidebar bg-light border-end ">
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <a href="/Quan-ly-san-pham" class="text-decoration-none fw-bold text-dark">Sản phẩm</a>
+          </li>
+          <li class="mb-3">
+            <a href="/Quan-ly-tai-khoan" class="text-decoration-none fw-bold text-dark">Tài khoản</a>
+          </li>
+          <li class="mb-3">
+            <a href="/Quan-ly-don-hang" class="text-decoration-none fw-bold text-dark">Đơn hàng</a>
+          </li>
+          <li class="mb-3">
+            <a href="/Quan-ly-don-hang" class="text-decoration-none fw-bold text-dark">Đăng xuất</a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Nội dung chính của Quản lý Tài khoản -->
+      <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1>Quản Lý Đơn Hàng</h1>
+          <div class="d-flex">
+            <input type="text" class="form-control w-100 me-2" placeholder="Tìm kiếm đơn hàng">
+          </div>
+        </div>
+ 
+        <table class="table table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th class="text-center order-id-column">Đơn hàng</th>
+              <th class="text-center date-column">Ngày Đặt</th>
+              <th class="text-center customer-info-column">Thông tin khách hàng</th>
+              <th class="text-center address-column">Địa chỉ</th>
+              <th class="text-center product-column">Sản phẩm - Size</th>
+              <th class="text-center quantity-column">Số lượng</th>
+              <th class="text-center total-column">Tổng tiền (VNĐ)</th>
+              <th class="text-center payment-method-column">Method</th>
+              <th class="text-center status-column">Trạng thái</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders; let i = index">
+              <td>{{ order._id }}</td>
+              <td>{{ order.timer.orderTime | date: 'dd/MM/yyyy HH:mm' }}</td>
+              <td>
+                # Name: {{order.customerInfo.name}} <br><br>
+                # Email: {{order.customerInfo.email}} <br><br>
+                # Phone: {{order.customerInfo.phone}}
+              </td>
+              <td>{{ order.customerInfo.address }}</td>
+              <!-- OrderDetails -->
+              <td>
+                <div *ngFor="let detail of order.orderDetail" class="mb-2">
+                  #Name: {{ detail.productName }} <br>
+                  #Size: {{ detail.size }} <br>
+                  #Số lượng: {{ detail.quantity }}
+                  <hr>
+                </div>
+              </td>
+              <td>{{ calculateTotalQuantity(order.orderDetail) }}</td>
+              <td>{{ order.total | number }}</td>
+              <td>{{ order.paymentMethod }}</td>
+              <td>
+                <select [(ngModel)]="order.status" class="form-select">
+                  <option value="Chờ xác nhận">Chờ xác nhận</option>
+                  <option value="Đang xử lý">Đang xử lý</option>
+                  <option value="Đang giao hàng">Đang giao hàng</option>
+                  <option value="Hoàn thành">Hoàn thành</option>
+                  <option value="Đã hủy">Đã hủy</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+  }
+  
+  .content {
+    margin-left: 220px;
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .thead-dark {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  .border-end {
+    border-right: 1px solid #dee2e6;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa !important;
+  }
+  
+  .d-flex {
+    display: flex;
+  }
+  
+  .me-2 {
+    margin-right: 0.5rem;
+  }
+  
+  .fa {
+    margin-right: 5px;
+  }
+  
+
+  /* Congif độ rộng */
+
+  .status-column {
+    min-width: 180px;
+  }
+
+  .date-column {
+    min-width: 100px;
+  }
+
+  .customer-info-column {
+    min-width: 20px;
+    max-width: 50px;
+  }
+
+  .address-column {
+    min-width: 180px;
+  }
+
+  .product-column {
+    min-width: 150px;
+  }
+
+  .total-column {
+    max-width: 50px;
+  }
+
+  
+
+  

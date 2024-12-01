@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar bg-light border-end ">
+      <ul class="list-unstyled">
+        <li class="mb-3">
+          <a href="/Quan-ly-san-pham" class="text-decoration-none fw-bold text-dark">Sản phẩm</a>
+        </li>
+        <li class="mb-3">
+          <a href="/Quan-ly-tai-khoan" class="text-decoration-none fw-bold text-dark">Tài khoản</a>
+        </li>
+        <li class="mb-3">
+          <a href="/Quan-ly-don-hang" class="text-decoration-none fw-bold text-dark">Đơn hàng</a>
+        </li>
+        <li class="mb-3">
+          <a href="/Quan-ly-don-hang" class="text-decoration-none fw-bold text-dark">Đăng xuất</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Nội dung chính của Quản lý Tài khoản -->
+    <div class="content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Quản Lý Tài Khoản</h1>
+        <div class="d-flex">
+          <input type="text" class="form-control  me-2" placeholder="Tìm kiếm tài khoản" [(ngModel)]="searchQuery"
+            (input)="onSearch()">
+        </div>
+      </div>
+
+    
+      <!-- Form chỉnh sửa người dùng -->
+      <div *ngIf="selectedUser" class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Chỉnh sửa thông tin người dùng</h5>
+          <form>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Số điện thoại</label>
+              <input type="text" id="phone" [(ngModel)]="selectedUser.phone" name="phone" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Tên</label>
+              <input type="text" id="name" [(ngModel)]="selectedUser.name" name="name" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="dob" class="form-label">Ngày sinh</label>
+              <input type="date" id="dob" [(ngModel)]="selectedUser.dob" name="dob" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Địa chỉ</label>
+              <input type="text" id="address" [(ngModel)]="selectedUser.address" name="address" class="form-control">
+            </div>
+            <button type="button" class="btn btn-success me-2" (click)="saveUser()">Lưu</button>
+            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Hủy</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Thông báo xóa thành công -->
+      <div *ngIf="deleteMessage" class="alert alert-success">
+        {{ deleteMessage }}
+      </div>
+
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Phone</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Date of Birth</th>
+            <th class="text-center address-col">Address</th> <!-- Thêm class "address-col" -->
+            <th class="text-center actions-col">Actions</th> <!-- Thêm class "actions-col" -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUsers; let i = index">
+            <td class="text-center">{{ i + 1 }}</td>
+            <td class="text-center">{{ user.email }}</td>
+            <td class="text-center">{{ user.phone }}</td>
+            <td class="text-center">{{ user.name }}</td>
+            <td class="text-center">{{ user.dob }}</td>
+            <td class="text-center address-col">{{ user.address }}</td> <!-- Thêm class "address-col" -->
+            <td class="text-center actions-col">
+              <button class="btn btn-primary btn-sm mx-2" (click)="editUser(user)">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Chỉnh sửa
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteUser(user._id)">
+                <i class="fa fa-trash" aria-hidden="true"></i> Xóa
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

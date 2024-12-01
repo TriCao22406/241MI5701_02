@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.thead-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.border-end {
+  border-right: 1px solid #dee2e6;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* Đảm bảo cột actions có kích thước phù hợp */
+.table th.actions-col, .table td.actions-col {
+  width: 180px; /* Bạn có thể điều chỉnh kích thước này tùy theo ý muốn */
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Thiết lập chiều rộng cho cột address và xử lý trường hợp nội dung quá dài */
+.table th.address-col, .table td.address-col {
+  max-width: 300px; /* Điều chỉnh kích thước tối đa */
+  word-wrap: break-word; /* Giúp xuống dòng khi dữ liệu quá dài */
+  white-space: normal; /* Cho phép ngắt dòng khi cần */
+}

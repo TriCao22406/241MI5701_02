@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <h1 class="mb-4 text-center text-primary">Thêm Sản Phẩm Mới</h1>
+  <form #productForm="ngForm" (ngSubmit)="addProduct()" class="row g-3 needs-validation" novalidate>
+    <!-- Product Name -->
+    <div class="col-md-6">
+      <label for="productName" class="form-label fw-bold">Product Name <span class="text-danger">*</span></label>
+      <input type="text" id="productName" class="form-control" [(ngModel)]="productName" name="productName" required>
+      <div *ngIf="productForm.submitted && !productName" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Product Type -->
+    <div class="col-md-6">
+      <label for="productType" class="form-label fw-bold">Product Type <span class="text-danger">*</span></label>
+      <input type="text" id="productType" class="form-control" [(ngModel)]="productType" name="productType" required>
+      <div *ngIf="productForm.submitted && !productType" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Material -->
+    <div class="col-md-6">
+      <label for="material" class="form-label fw-bold">Material <span class="text-danger">*</span></label>
+      <input type="text" id="material" class="form-control" [(ngModel)]="material" name="material" required>
+      <div *ngIf="productForm.submitted && !material" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Price -->
+    <div class="col-md-6">
+      <label for="price" class="form-label fw-bold">Price (VNĐ) <span class="text-danger">*</span></label>
+      <input type="number" id="price" class="form-control" [(ngModel)]="price" name="price" required>
+      <div *ngIf="productForm.submitted && !price" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Discount -->
+    <div class="col-md-6">
+      <label for="discount" class="form-label fw-bold">Discount (%) <span class="text-danger">*</span></label>
+      <input type="number" id="discount" class="form-control" [(ngModel)]="discount" name="discount" required>
+      <div *ngIf="productForm.submitted && !discount" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Product Code -->
+    <div class="col-md-6">
+      <label for="productCode" class="form-label fw-bold">Product Code <span class="text-danger">*</span></label>
+      <input type="text" id="productCode" class="form-control" [(ngModel)]="productCode" name="productCode" required>
+      <div *ngIf="productForm.submitted && !productCode" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="col-12">
+      <label for="productDetails" class="form-label fw-bold">Product Details <span class="text-danger">*</span></label>
+      <textarea id="productDetails" class="form-control" [(ngModel)]="productDetails" name="productDetails" rows="2" required></textarea>
+      <div *ngIf="productForm.submitted && !productDetails" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Description -->
+    <div class="col-12">
+      <label for="description" class="form-label fw-bold">Description <span class="text-danger">*</span></label>
+      <textarea id="description" class="form-control" [(ngModel)]="description" name="description" rows="2" required></textarea>
+      <div *ngIf="productForm.submitted && !description" class="text-danger">Trường này là bắt buộc.</div>
+    </div>
+
+    <!-- Product Collection -->
+    <div class="col-12">
+      <label for="productCollection" class="form-label fw-bold">Product Collection</label>
+      <input type="text" id="productCollection" class="form-control" [(ngModel)]="productCollection" name="productCollection">
+    </div>
+
+    <!-- Sizes -->
+    <div class="col-12">
+      <label class="form-label fw-bold mx-2">Sizes <span class="text-danger">*</span>: </label>
+      <div *ngFor="let size of sizes; let i = index" class="input-group mb-2">
+        <input type="number" class="form-control" [(ngModel)]="sizes[i].size" name="size-{{i}}" placeholder="Size" required>
+        <input type="number" class="form-control" [(ngModel)]="sizes[i].quantity" name="quantity-{{i}}" placeholder="Quantity" required>
+        <button type="button" class="btn btn-danger" (click)="removeSize(i)">Xóa</button>
+      </div>
+      <button type="button" class="btn btn-outline-secondary" (click)="addSize()">+ Thêm Kích Thước</button>
+    </div>
+
+    <!-- Images -->
+    <div class="col-12">
+      <label class="form-label fw-bold mx-2">Images (URL) <span class="text-danger">*</span>: </label>
+      <div *ngFor="let image of images; let i = index" class="input-group mb-2">
+        <input type="text" class="form-control" [(ngModel)]="images[i]" name="image-{{i}}" placeholder="URL Hình Ảnh" required>
+        <button type="button" class="btn btn-danger" (click)="removeImage(i)">Xóa</button>
+      </div>
+      <button type="button" class="btn btn-outline-secondary" (click)="addImage()">+ Thêm Hình Ảnh</button>
+    </div>
+
+    <!-- Nút thêm sản phẩm -->
+    <div class="col-12 text-center mt-4">
+      <button type="submit" class="btn btn-primary" [disabled]="!productForm.form.valid">Thêm Sản Phẩm</button>
+    </div>
+  </form>
+</div>

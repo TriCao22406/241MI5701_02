@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+faiss-cpu
+langchain
+openai 
+requests
+ollama
+# uvicorn app:app --reload
+# ollama serve --model nomic-embed-text
